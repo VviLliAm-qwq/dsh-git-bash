@@ -4,6 +4,8 @@
 
 **中文** · [English](README.md)
 
+为 [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) 构建。
+
 让 **Git for Windows** 的 `bash` 在 dsh 宿主进程里能被解析到，从而让官方 bash shell 工具栈在 Windows 上跑起来。
 
 ## 它解决什么问题

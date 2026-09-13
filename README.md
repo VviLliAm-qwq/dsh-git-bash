@@ -4,6 +4,8 @@
 
 **English** · [中文](README.zh.md)
 
+Built for [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI).
+
 Make a **Git for Windows** installation resolvable as `bash` inside the dsh
 host process, so the official bash shell stack can run on Windows.
 
