@@ -10,7 +10,11 @@ permissions:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    # Windows, because the suite this gates on is Windows-specific (see ci.yml).
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v4
 
