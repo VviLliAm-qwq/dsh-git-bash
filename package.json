@@ -2,6 +2,7 @@
   "name": "dsh-git-bash",
   "version": "0.1.1",
   "description": "Make a Git for Windows installation resolvable as `bash` inside the dsh host process, so the official bash shell stack (dsh-bash-sandbox + dsh-tool-bash) can run on Windows",
+  "packageManager": "pnpm@11.22.0",
   "license": "MIT",
   "repository": {
     "type": "git",
