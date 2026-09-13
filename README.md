@@ -1,5 +1,7 @@
 # dsh-git-bash
 
+[![ci](https://github.com/VviLliAm-qwq/dsh-git-bash/actions/workflows/ci.yml/badge.svg)](https://github.com/VviLliAm-qwq/dsh-git-bash/actions/workflows/ci.yml)
+
 **English** · [中文](README.zh.md)
 
 Make a **Git for Windows** installation resolvable as `bash` inside the dsh
@@ -142,6 +144,7 @@ the host logger.
 ## Publishing
 
 - **Repository**: <https://github.com/VviLliAm-qwq/dsh-git-bash> (public)
+- **Release**: `v*` tags drive `.github/workflows/release.yml`, which publishes to npm through **trusted publishing (OIDC)** — no token is stored in the repository.
 
 ## License
 

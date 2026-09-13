@@ -1,5 +1,7 @@
 # dsh-git-bash
 
+[![ci](https://github.com/VviLliAm-qwq/dsh-git-bash/actions/workflows/ci.yml/badge.svg)](https://github.com/VviLliAm-qwq/dsh-git-bash/actions/workflows/ci.yml)
+
 **中文** · [English](README.md)
 
 让 **Git for Windows** 的 `bash` 在 dsh 宿主进程里能被解析到，从而让官方 bash shell 工具栈在 Windows 上跑起来。
@@ -101,6 +103,7 @@ pnpm verify            # 以上两项依次执行
 ## 发布
 
 - **仓库**：<https://github.com/VviLliAm-qwq/dsh-git-bash>（公开）
+- **发布方式**：`v*` tag 驱动 `.github/workflows/release.yml`，经 npm **可信发布（OIDC）**上传——仓库内不存放任何令牌。
 
 ## 许可
 
