@@ -1,0 +1,47 @@
+# Your patch layer for this dsh profile, applied after every bundle layer:
+# a top-level YAML array of loader patch entries (id-targeted config
+# overrides, disables, and insert lists; `!!js` expressions allowed).
+#
+# dsh-git-bash does two things, and the second one is why this patch is not
+# just an insert:
+#
+#   1. inserts the dsh-git-bash row, which prepends a Git for Windows `bin`
+#      directory to the host process PATH so the bare name `bash` resolves;
+#   2. swaps the two platform-gated shell stacks. `@deepseek-ai/dsh-base`
+#      disables the bash rows on win32 (`disabled: !!js process.platform ===
+#      'win32'`) because their executor and sandbox layer both spawn `bash`.
+#      Both stacks provide `ctx.shell`, so exactly one may mount: this is a
+#      swap, not an addition. PowerShell stays reachable from bash
+#      (`powershell -Command '…'`).
+#
+# Revert by removing the bundle (`dsh plugin --profile <p> remove dsh-git-bash`):
+# every override below disappears with it. `bash-sandbox`'s config is restated
+# because a patch replaces the row's whole config object.
+#
+# The row is inserted last, after the stack rows it enables. That order is
+# harmless: nothing spawns `bash` while the tree loads, and this plugin has
+# already fixed PATH by the time any tool call runs. Keep a LIVE profile's own
+# `cordis.patch.yml` out of this swap — that file is watched by
+# `patchReload: live`, so editing it swaps the stack of running sessions
+# instantly, before this row is loaded.
+- insert:
+    - id: dsh-git-bash
+      name: 'dsh-git-bash'
+
+- id: bash-sandbox
+  name: '@deepseek-ai/dsh-bash-sandbox'
+  disabled: false
+  config:
+    timeoutMs: 60000
+
+- id: pwsh-sandbox
+  name: '@deepseek-ai/dsh-pwsh-sandbox'
+  disabled: true
+
+- id: tool-bash
+  name: '@deepseek-ai/dsh-tool-bash'
+  disabled: false
+
+- id: tool-pwsh
+  name: '@deepseek-ai/dsh-tool-pwsh'
+  disabled: true

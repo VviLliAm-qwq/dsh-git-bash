@@ -1,0 +1,43 @@
+{
+  "name": "dsh-git-bash",
+  "version": "0.1.1",
+  "description": "Make a Git for Windows installation resolvable as `bash` inside the dsh host process, so the official bash shell stack (dsh-bash-sandbox + dsh-tool-bash) can run on Windows",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VviLliAm-qwq/dsh-git-bash.git"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": "^22.19 || >=24"
+  },
+  "scripts": {
+    "check:encoding": "node scripts/check-encoding.mjs",
+    "test": "node --test",
+    "verify": "npm run check:encoding && npm run test"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "devDependencies": {
+    "@deepseek-ai/schemastery": "^3.18.1"
+  }
+}
